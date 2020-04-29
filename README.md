@@ -56,4 +56,6 @@ set interfaces ge-0/0/0 unit 0 family inet6 address 2001:db8:cafe:0f:600d:f00d::
 **XML** and **JSON** - formats used primarily for machine-to-machine communication (e.g. scripting).
 Those formats are not included in the scope of these scripts.
 
+**These scripts convert BRACE-format into SET-format**
+
 Have fun! :-)

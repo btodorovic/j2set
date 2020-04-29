@@ -1,4 +1,4 @@
-all:	zip git
+all:	git
 
 zip:
 	cd .. ; rm -f bt-l2vpn-vmm.zip ; zip -r bt-l2vpn-vmm.zip bt-l2vpn -x '*.git*'
