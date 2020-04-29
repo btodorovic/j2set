@@ -53,65 +53,7 @@ for manual operations on the router configuration, example:
 set interfaces ge-0/0/0 unit 0 family inet6 address 2001:db8:cafe:0f:600d:f00d::1/64
 </pre>
 
-**XML** - format used primarily for machine-to-machine communication (e.g. scripting) - e.g.:
-<pre>
-<rpc-reply xmlns:junos="http://xml.juniper.net/junos/18.4R2/junos">
-    <configuration junos:changed-seconds="1588149577" junos:changed-localtime="2020-04-29 10:39:37 CEST">
-            <interfaces>
-                <interface>
-                    <name>ge-0/0/0</name>
-                    <unit>
-                        <name>0</name>
-                        <family>
-                            <inet6>
-                                <address>
-                                    <name>2001:db8:cafe:0f:600d:f00d::1/64</name>
-                                </address>
-                            </inet6>
-                        </family>
-                    </unit>
-                </interface>
-            </interfaces>
-    </configuration>
-    <cli>
-        <banner>[edit]</banner>
-    </cli>
-</rpc-reply>
-</pre>
+**XML** and **JSON** - formats used primarily for machine-to-machine communication (e.g. scripting).
+Those formats are not included in the scope of these scripts.
 
-**JSON** - also a good one, used also primarily for M2M:
-
-<pre>
-{
-    "configuration" : {
-        "@" : {
-            "junos:changed-seconds" : "1588149577",
-            "junos:changed-localtime" : "2020-04-29 10:39:37 CEST"
-        },
-        "interfaces" : {
-            "interface" : [
-            {
-                "name" : "ge-0/0/0",
-                "unit" : [
-                {
-                    "name" : 0,
-                    "family" : {
-                        "inet6" : {
-                            "address" : [
-                            {
-                                "name" : "2001:db8:cafe:0f:600d:f00d::1/64"
-                            }
-                            ]
-                        }
-                    }
-                }
-                ]
-            }
-            ]
-        }
-    }
-}
-</pre>
-
-Those scripts convert **BRACE** into **SET** format.
-
+Have fun! :-)
