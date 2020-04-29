@@ -2,11 +2,13 @@
 
 ## Overview
 This is a collection of scripts used to convert Junos OS "brace" configuration into "set" format.
+Useful when converting snippets from Junos OS Documentation into set-commands.
 Two scripts are given - Perl and Python.
 
 **LICENSE** - Released under [GPL 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 **ADDITIONAL DISCLAIMER** - Those scripts are not 100% error-free and they possibly don't cover all corner cases.
+But most of the configurations I worked with ended up in correct translations.
 Use with extreme care!
 
 ## Usage
