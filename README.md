@@ -112,3 +112,4 @@ set interfaces ge-0/0/0 unit 0 family inet6 address 2001:db8:cafe:0f:600d:f00d::
 </pre>
 
 Those scripts convert **BRACE** into **SET** format.
+
