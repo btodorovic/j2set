@@ -82,6 +82,7 @@ foreach (@chars) {
 	$buffer = '';
 	next;
     }
+    next if (ord($_)<32 || ord($_)>127);
     $buffer .= $_;
     $prevchar = $_;
 }

@@ -64,6 +64,8 @@ for line in file.readlines():
 	    set.append(set_cmd)
 	    buffer = ''
 	    continue
+        if (ord(ch)<32 or ord(ch)>127):
+	    continue
 
         buffer += ch
         prevchar = ch
