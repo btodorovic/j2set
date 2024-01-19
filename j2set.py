@@ -18,11 +18,18 @@ comment = 0
 buffer = ''
 config = []
 set = []
+inactive = {}
 
+deactivate_cmd = ''
 for line in file.readlines():
     line = re.sub(r'\r+$', '', line)
-    line = re.sub(r'^\s+', '', line)
-
+    #line = re.sub(r'^\s+', '', line)
+    line = line.strip()
+    deactivate = 0
+    if ('inactive:' in line):
+        print (line)
+        line = re.sub('inactive:\s+', '', line)
+        deactivate = line[:-1]
     for ch in line:
         if ch == '\n':
 	    comment = 0
@@ -51,17 +58,25 @@ for line in file.readlines():
 	    continue
         if ch == '{' and not quote:
 	    config.append(buffer)
+            if (deactivate):
+                deactivate_cmd = 'deactivate ' + ''.join(config)
 	    buffer = ''
 	    continue
         if ch == '}' and not quote:
 	    config.pop()
 	    continue
         if ch == ';' and not quote:
-	    set_cmd = 'set '
+            if (deactivate):
+                set_cmd = 'deactivate '
+            else:
+                set_cmd = 'set '
 	    for level in config:
 	        set_cmd += level
 	    set_cmd += buffer
 	    set.append(set_cmd)
+            if (deactivate_cmd):
+	        set.append(deactivate_cmd)
+                deactivate_cmd = ''
 	    buffer = ''
 	    continue
         if (ord(ch)<32 or ord(ch)>127):
@@ -72,12 +87,6 @@ for line in file.readlines():
 
 prev_cmd = ''
 for cmd in set:
-    if ('inactive:') in cmd:
-	w = cmd.split(' ')
-	inactive_term = w[w.index('inactive:')+1]
-	cmd = re.sub('^set', 'deactivate', cmd)
-	cmd = re.sub('inactive:.*$', '', cmd)
-	cmd += inactive_term
     if cmd != prev_cmd:
         print cmd
     prev_cmd = cmd
