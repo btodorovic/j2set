@@ -35,8 +35,7 @@ for line in file.readlines():
 	    comment = 0
 	    break
         if ch == '#' and not quote:
-	    comment = 1
-	    continue
+            break
         if ch == '*' and prevchar == '/' and not quote and not ann:
 	    ann = 1
 	    prevchar = ch
